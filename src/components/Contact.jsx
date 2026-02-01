@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Instagram, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Spotify = ({ size = 24 }) => (
   <svg
@@ -89,27 +89,8 @@ const Contact = () => {
 };
 
 export const Footer = () => {
-  const socials = [
-    { icon: <Github size={20} />, href: '#' },
-    { icon: <Linkedin size={20} />, href: '#' },
-    { icon: <Twitter size={20} />, href: '#' },
-    { icon: <Instagram size={20} />, href: '#' },
-    { icon: <Mail size={20} />, href: 'mailto:sumitsha711@gmail.com' },
-  ];
-
   return (
     <footer className="bg-navy py-8 text-center">
-      <div className="flex justify-center gap-6 mb-8 md:hidden">
-        {socials.map((s, i) => (
-            <a 
-              key={i} 
-              href={s.href} 
-              className="text-slate hover:text-teal hover:-translate-y-1 transition-all duration-300"
-            >
-              {s.icon}
-            </a>
-        ))}
-      </div>
       
       <a 
         href="https://github.com/bchiang7/v4" 
