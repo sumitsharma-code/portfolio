@@ -23,7 +23,7 @@ const Spotify = ({ size = 24 }) => (
 
 const Contact = () => {
   return (
-    <section id="contact" className="section-padding py-24 text-center max-w-[600px] font-sans">
+    <section id="contact" className="section-padding py-24 text-center max-w-[600px] font-sans px-6 mx-auto">
       <motion.p 
         initial={{ y: 20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -117,7 +117,7 @@ export const Footer = () => {
         rel="noopener noreferrer"
         className="font-mono text-xs text-slate hover:text-teal mb-2 block transition-colors"
       >
-        Start building
+        Inspiration Link
       </a>
       <p className="font-mono text-xs text-slate">
         &copy; {new Date().getFullYear()} Sumit. All Rights Reserved.

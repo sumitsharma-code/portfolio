@@ -13,7 +13,7 @@ const Hobbies = () => {
   ];
 
   return (
-    <section className="section-padding py-24">
+    <section className="section-padding py-24 px-6 md:px-12">
       <div className="text-center mb-12">
         <h2 className="text-2xl font-bold text-lightest-slate mb-4">Other Interests</h2>
         <p className="text-slate max-w-lg mx-auto">
