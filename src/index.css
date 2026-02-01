@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+    /* Slate & Sky Theme (Matches Profile Photo) */
+    --color-navy: #0f172a;
+    /* Slate 900 - Deep, cool dark */
+    --color-light-navy: #1e293b;
+    /* Slate 800 - Lighter background */
+    --color-lightest-navy: #334155;
+    /* Slate 700 - Borders/Highlights */
+
+    --color-slate: #94a3b8;
+    /* Slate 400 - Muted text */
+    --color-light-slate: #e2e8f0;
+    /* Slate 200 - Bright text (off-white for contrast) */
+    --color-white: #f8fafc;
+    /* Slate 50 - Pure white accents */
+
+    --color-teal: #38bdf8;
+    /* Sky 400 - Matches the light blue shirt plaid */
+    --color-teal-tint: rgba(56, 189, 248, 0.1);
+
+    --font-sans: Inter, sans-serif;
+    --font-mono: "SF Mono", "Fira Code", monospace;
+}
+
+@layer utilities {
+    .section-padding {
+        @apply py-24 px-6 md:px-12 lg:px-24 mx-auto max-w-[1600px];
+    }
+}
+
+/* Custom Scrollbar - Updated colors */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-navy);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-lightest-navy);
+    border: 3px solid var(--color-navy);
+    border-radius: 10px;
+}
