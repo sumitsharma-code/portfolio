@@ -23,66 +23,42 @@ const Spotify = ({ size = 24 }) => (
 
 const Contact = () => {
   return (
-    <section id="contact" className="section-padding py-24 text-center max-w-[600px] font-sans px-6 mx-auto">
-      <motion.p 
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-teal font-mono mb-6"
+    <section id="contact" className="py-32 bg-navy text-lightest-slate text-center flex flex-col items-center min-h-[80vh] justify-center px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="max-w-[1200px] w-full"
       >
-        04. What's Next?
-      </motion.p>
-      
-      <motion.h2 
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-5xl font-bold text-lightest-slate mb-6"
-      >
-        Get In Touch
-      </motion.h2>
-      
-      <motion.p 
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-slate text-lg mb-12"
-      >
-        I'm currently looking for new opportunities, and my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-      </motion.p>
-      
-      <motion.a 
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        href="mailto:sumitsha711@gmail.com" 
-        className="inline-block border border-teal text-teal px-8 py-4 rounded font-mono hover:bg-teal/10 transition-colors"
-      >
-        Say Hello
-      </motion.a>
+        <p className="font-mono text-sm tracking-widest uppercase mb-8 text-slate">/ What's Next?</p>
+        
+        <h2 className="text-[10vw] leading-none font-bold uppercase tracking-tighter mb-12 hover:text-teal transition-colors">
+          <a href="mailto:sumitsha711@gmail.com">Let's Talk.</a>
+        </h2>
+        
+        <p className="text-xl md:text-2xl font-medium max-w-2xl mx-auto mb-16 text-slate">
+          I'm currently looking for new opportunities. My inbox is always open for questions, collaborations, or just a friendly hello.
+        </p>
 
-      <motion.div 
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        className="flex justify-center gap-6 mt-12"
-      >
-        {[
-          { icon: <Github size={24} />, href: 'https://github.com/sumitsharma-code' },
-          { icon: <Linkedin size={24} />, href: 'https://www.linkedin.com/in/sumiiitsharma/' },
-          { icon: <Spotify size={24} />, href: 'https://open.spotify.com/artist/3cmuxy1d4dLjlqjR1WlPs7' },
-          { icon: <Mail size={24} />, href: 'mailto:sumitsha711@gmail.com' },
-        ].map((social, index) => (
-          <a
-            key={index}
-            href={social.href}
-            target={social.href.startsWith('mailto') ? "_self" : "_blank"}
-            rel={social.href.startsWith('mailto') ? "" : "noopener noreferrer"}
-            className="text-slate hover:text-teal hover:-translate-y-1 transition-all duration-300"
-          >
-            {social.icon}
-          </a>
-        ))}
+        <div className="flex justify-center gap-10">
+          {[
+            { icon: <Github size={32} />, href: 'https://github.com/sumitsharma-code' },
+            { icon: <Linkedin size={32} />, href: 'https://www.linkedin.com/in/sumiiitsharma/' },
+            { icon: <Spotify size={32} />, href: 'https://open.spotify.com/artist/3cmuxy1d4dLjlqjR1WlPs7' },
+            { icon: <Mail size={32} />, href: 'mailto:sumitsha711@gmail.com' },
+          ].map((social, index) => (
+            <a
+              key={index}
+              href={social.href}
+              target={social.href.startsWith('mailto') ? "_self" : "_blank"}
+              rel={social.href.startsWith('mailto') ? "" : "noopener noreferrer"}
+              className="text-slate hover:text-teal hover:-translate-y-2 transition-all duration-300"
+            >
+              {social.icon}
+            </a>
+          ))}
+        </div>
       </motion.div>
     </section>
   );
@@ -90,19 +66,18 @@ const Contact = () => {
 
 export const Footer = () => {
   return (
-    <footer className="bg-navy py-8 text-center">
-      
-      <a 
-        href="https://github.com/bchiang7/v4" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="font-mono text-xs text-slate hover:text-teal mb-2 block transition-colors"
-      >
-        Inspiration Link
-      </a>
-      <p className="font-mono text-xs text-slate">
-        &copy; {new Date().getFullYear()} Sumit. All Rights Reserved.
-      </p>
+    <footer className="bg-navy py-12 text-center text-white border-t border-lightest-navy">
+      <div className="flex flex-col md:flex-row justify-between items-center max-w-[1600px] mx-auto px-6 md:px-12">
+        <p className="font-mono text-xs uppercase tracking-widest mb-4 md:mb-0 text-slate">
+          &copy; {new Date().getFullYear()} SUMIT SHARMA. ALL RIGHTS RESERVED.
+        </p>
+        <button 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="font-mono text-xs uppercase tracking-widest hover:text-teal transition-colors"
+        >
+          BACK TO TOP ↑
+        </button>
+      </div>
     </footer>
   );
 };

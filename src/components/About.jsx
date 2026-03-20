@@ -1,77 +1,95 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const About = () => {
   const skills = [
-    'MERN Stack',
-    'Python',
-    'C++',
-    'Blender',
-    'JavaScript (ES6+)',
-    'FL Studio'
+    'C++', 'PYTHON', 'JAVASCRIPT', 'REACT JS', 'NODE JS', 'MONGODB', 'TAILWIND CSS', 'GIT', 'GITHUB', 'BLENDER',
+    'C++', 'PYTHON', 'JAVASCRIPT', 'REACT JS', 'NODE JS', 'MONGODB', 'TAILWIND CSS', 'GIT', 'GITHUB', 'BLENDER',
   ];
 
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Para 1: bright → dim as you scroll past 40%
+  const para1Color = useTransform(scrollYProgress, [0, 0.25, 0.45], ["#f8fafc", "#f8fafc", "#475569"]);
+  // Para 2: dim → bright at 0.3, stays bright until 0.72, then dims smoothly
+  const para2Color = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.72, 0.88], ["#475569", "#475569", "#f8fafc", "#f8fafc", "#475569"]);
+  // Para 3: dim → bright starting at 0.72
+  const para3Color = useTransform(scrollYProgress, [0.72, 0.92], ["#334155", "#f8fafc"]);
+
   return (
-    <section id="about" className="section-padding min-h-screen flex items-center">
-      <div className="w-full">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center mb-10"
-        >
-          <span className="text-teal font-mono text-xl mr-4">01.</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-lightest-slate whitespace-nowrap mr-6">About Me</h2>
-          <div className="h-[1px] bg-lightest-navy w-full max-w-[300px]"></div>
-        </motion.div>
+    <section ref={sectionRef} id="about" className="py-24 bg-light-navy text-white min-h-[160vh] relative flex flex-col justify-center overflow-clip">
+      
+      {/* Infinite Marquee for Skills */}
+      <div className="absolute top-0 left-0 w-full h-[300px] overflow-hidden z-0 pointer-events-none">
+        <div className="w-[110vw] -ml-[5vw] mt-20 border-y-2 border-slate py-6 bg-navy rotate-2">
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ ease: "linear", duration: 15, repeat: Infinity }}
+            className="flex whitespace-nowrap w-max"
+          >
+            {skills.map((skill, i) => (
+              <span key={i} className="text-4xl md:text-6xl font-bold font-mono tracking-widest px-8 text-white uppercase">
+                {skill} <span className="text-teal ml-8">✦</span>
+              </span>
+            ))}
+          </motion.div>
+        </div>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-12">
-          <div className="md:col-span-2 text-slate text-lg leading-relaxed">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 z-10 mt-48 lg:mt-64">
+        <div className="grid md:grid-cols-12 gap-12 items-start relative h-full">
+          {/* Brutalist Bio Text */}
+          <div className="md:col-span-7">
+            <h2 className="text-sm font-mono tracking-widest text-slate mb-6 uppercase">/ About Me</h2>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="text-2xl md:text-4xl lg:text-5xl font-medium leading-tight uppercase font-heading pr-4 lg:pr-12"
             >
-              <p className="mb-4">
-                Hello! My name is <span className="font-bold text-teal">Sumit</span>, and I enjoy creating things that live on the internet. My interest in <span className="font-bold text-teal">web development</span> grew from experimenting with layouts, interfaces, and figuring out how things work under the hood — turns out turning ideas into real web experiences is pretty addictive.
-              </p>
-              <p className="mb-4">
-                Fast-forward to today, I’m a <span className="font-bold text-teal">B.Tech CSE</span> student exploring the world of software engineering. I enjoy building clean, accessible, and human-centered digital experiences, and I’m currently focused on strengthening my <span className="font-bold text-teal">full-stack skills</span> and problem-solving through DSA.
-              </p>
-              <p className="mb-4">
-                Outside of coding, I like making <span className="text-teal font-bold">music</span> — it’s my way of staying creative and balanced.
-              </p>
-              <p className="mb-6">
-                Here are a few technologies I've been working with recently:
-              </p>
-
-              <ul className="grid grid-cols-2 gap-2 font-mono text-sm max-w-[400px]">
-                {skills.map((skill, i) => (
-                  <li key={i} className="flex items-center text-slate">
-                    <span className="text-teal mr-2">▹</span>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
+              <motion.p style={{ color: para1Color }} className="mb-8">
+                I'm Sumit Sharma — a CS student who turns ideas into real-world digital experiences.
+              </motion.p>
+              <motion.p style={{ color: para2Color }} className="mb-8">
+                B.Tech Computer Science. Full-stack focused. Building scalable apps with JavaScript, Node.js & modern frameworks — powered by a love for clean interfaces and strong DSA foundations.
+              </motion.p>
+              <motion.p style={{ color: para3Color }} className="text-xl md:text-2xl lg:text-3xl font-mono tracking-wide normal-case">
+                Also a Punjabi music producer under{' '}
+                <span className="text-teal font-bold">ZiKKR</span>
+                {' '}— where code meets creativity.
+              </motion.p>
             </motion.div>
           </div>
 
-          <div className="md:col-span-1 flex justify-center md:justify-start">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="relative w-64 h-64 md:w-72 md:h-72 group"
-            >
-              {/* Image Container with Hover Effect */}
-              <div className="w-full h-full bg-light-navy rounded overflow-hidden border-2 border-teal transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1 relative z-0 text-center flex items-center justify-center">
-                 <img src="/profile.jpg" alt="Profile" className="w-full h-full object-cover transition-all duration-300" />
-              </div>
-              <div className="absolute inset-0 border-2 border-teal rounded translate-x-4 translate-y-4 -z-10 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
-            </motion.div>
+          {/* Stark Profile Image */}
+          <div className="md:col-span-5 h-full relative mt-12 md:mt-0 pointer-events-none">
+            <div className="sticky top-[20vh] flex justify-center md:justify-end mt-2">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative w-full max-w-lg lg:max-w-2xl"
+              >
+                {/* Seamless Profile Image */}
+                <div className="w-full flex items-start justify-center">
+                  <img 
+                    src="/prof-bg-rem.png" 
+                    alt="Sumit" 
+                    className="w-[145%] h-auto object-contain object-top drop-shadow-2xl pointer-events-auto md:-mr-20" 
+                    style={{ 
+                      maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)", 
+                      WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)" 
+                    }}
+                  />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>

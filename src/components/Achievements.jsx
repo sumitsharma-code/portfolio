@@ -42,74 +42,60 @@ const Achievements = () => {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
-      transition: { 
-        staggerChildren: 0.1
-      }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
   };
 
   return (
-    <section id="achievements" className="section-padding min-h-screen items-center py-24 px-6 md:px-12">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="flex items-center mb-12"
-      >
-        <span className="text-teal font-mono text-xl mr-4">02.</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-lightest-slate whitespace-nowrap mr-6">Certificates & Achievements</h2>
-        <div className="h-[1px] bg-lightest-navy w-full max-w-[300px]"></div>
-      </motion.div>
+    <section id="achievements" className="py-24 px-6 md:px-12 bg-navy text-white min-h-screen">
+      <div className="max-w-[1200px] mx-auto grid md:grid-cols-1 gap-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-between items-end border-b-2 border-slate pb-4"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-lightest-slate">Certificates</h2>
+          <span className="text-slate font-mono hidden md:block">03</span>
+        </motion.div>
 
-      <div className="max-w-4xl mx-auto grid md:grid-cols-1 gap-12">
-        
         {/* Certificates Section */}
-        <div>
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-2xl font-bold text-lightest-slate mb-6 flex items-center"
-          >
-            <span className="text-teal mr-2">▹</span> Certificates
-          </motion.h3>
-          
+        <div className="-mt-12">
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-4"
+            className="flex flex-col"
           >
             {certificates.map((item, i) => (
               <motion.div 
                 key={i}
                 variants={itemVariants}
-                className="bg-light-navy/50 p-6 rounded-lg hover:bg-light-navy transition-colors border-l-4 border-teal shadow-lg group flex flex-col md:flex-row md:justify-between md:items-center gap-4"
+                className="border-b border-lightest-navy hover:bg-light-navy transition-colors duration-300 py-6 px-4 group flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4"
               >
                   <div className="flex-1">
-                    <h4 className="text-lg font-bold text-lightest-slate group-hover:text-teal transition-colors flex items-center gap-2">
+                    <h4 className="text-xl md:text-2xl font-bold text-lightest-slate uppercase tracking-tight group-hover:text-teal transition-colors">
                        {item.link !== '#' ? (
-                         <a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-2">
+                         <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                            {item.title}
-                           <ExternalLink className="w-4 h-4 opacity-70" />
+                           <ExternalLink className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                          </a>
                        ) : (
                          item.title
                        )}
                     </h4>
-                    <p className="text-teal font-mono text-sm mt-1">| {item.organization}</p>
+                    <p className="text-slate font-mono text-xs uppercase tracking-widest mt-2">{item.organization}</p>
                   </div>
                   
                   <div className="flex items-center gap-4 min-w-max">
-                     <span className="text-slate font-mono text-sm flex items-center">
-                      <Calendar className="w-4 h-4 mr-2" />
+                     <span className="text-white font-mono text-sm border border-slate px-3 py-1 rounded-full uppercase">
                       {item.date}
                     </span>
                   </div>
@@ -118,44 +104,44 @@ const Achievements = () => {
           </motion.div>
         </div>
 
-        {/* Achievements Section */}
-        <div>
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-2xl font-bold text-lightest-slate mb-6 flex items-center"
-          >
-             <span className="text-teal mr-2">▹</span> Achievements
-          </motion.h3>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-between items-end border-b-2 border-slate pb-4"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-lightest-slate">Achievements</h2>
+          <span className="text-slate font-mono hidden md:block">04</span>
+        </motion.div>
 
+        {/* Achievements Section */}
+        <div className="-mt-12">
           <motion.div 
              variants={containerVariants}
              initial="hidden"
              whileInView="visible"
              viewport={{ once: true }}
-             className="space-y-4"
+             className="flex flex-col"
           >
             {achievementsList.map((item, i) => (
                <motion.div 
                 key={i}
                 variants={itemVariants}
-                className="bg-light-navy/50 p-6 rounded-lg hover:bg-light-navy transition-colors border-l-4 border-t-0 border-r-0 border-b-0 border-teal shadow-lg group flex flex-col md:flex-row md:justify-between md:items-center gap-4"
+                className="border-b border-lightest-navy hover:bg-light-navy transition-colors duration-300 py-6 px-4 group flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4"
               >
                  <div className="flex-1">
-                    <h4 className="text-lg font-bold text-lightest-slate group-hover:text-teal transition-colors flex items-center gap-2">
+                    <h4 className="text-xl md:text-2xl font-bold text-lightest-slate uppercase tracking-tight group-hover:text-teal transition-colors">
                        {item.link && item.link !== '#' ? (
-                         <a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-2">
+                         <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                            {item.title}
-                           <ExternalLink className="w-4 h-4 opacity-70" />
+                           <ExternalLink className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                          </a>
                        ) : (
                          item.title
                        )}
                     </h4>
-                 </div>
-                 <div className="flex items-center gap-2">
-                    <span className="text-teal font-mono text-sm">| {item.organization}</span>
+                    <p className="text-slate font-mono text-xs uppercase tracking-widest mt-2">{item.organization}</p>
                  </div>
               </motion.div>
             ))}
