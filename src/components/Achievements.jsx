@@ -52,72 +52,75 @@ const Achievements = () => {
   };
 
   return (
-    <section id="achievements" className="py-24 px-6 md:px-12 bg-navy text-white min-h-screen">
+    <section className="py-24 px-6 md:px-12 bg-navy text-white min-h-screen">
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-1 gap-20">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-between items-end border-b-2 border-slate pb-4"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-lightest-slate">Certificates</h2>
-          <span className="text-slate font-mono hidden md:block">03</span>
-        </motion.div>
-
-        {/* Certificates Section */}
-        <div className="-mt-12">
+        <div id="certifications">
           <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col"
+            transition={{ duration: 0.5 }}
+            className="flex justify-between items-end border-b-2 border-slate pb-4"
           >
-            {certificates.map((item, i) => (
-              <motion.div 
-                key={i}
-                variants={itemVariants}
-                className="border-b border-lightest-navy hover:bg-light-navy transition-colors duration-300 py-6 px-4 group flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4"
-              >
-                  <div className="flex-1">
-                    <h4 className="text-xl md:text-2xl font-bold text-lightest-slate uppercase tracking-tight group-hover:text-teal transition-colors">
-                       {item.link !== '#' ? (
-                         <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
-                           {item.title}
-                           <ExternalLink className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                         </a>
-                       ) : (
-                         item.title
-                       )}
-                    </h4>
-                    <p className="text-slate font-mono text-xs uppercase tracking-widest mt-2">{item.organization}</p>
-                  </div>
-                  
-                  <div className="flex items-center gap-4 min-w-max">
-                     <span className="text-white font-mono text-sm border border-slate px-3 py-1 rounded-full uppercase">
-                      {item.date}
-                    </span>
-                  </div>
-              </motion.div>
-            ))}
+            <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-lightest-slate">Certificates</h2>
+            <span className="text-slate font-mono hidden md:block">03</span>
           </motion.div>
+
+          {/* Certificates Section */}
+          <div className="mt-8">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex flex-col"
+            >
+              {certificates.map((item, i) => (
+                <motion.div 
+                  key={i}
+                  variants={itemVariants}
+                  className="border-b border-lightest-navy hover:bg-light-navy transition-colors duration-300 py-6 px-4 group flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4"
+                >
+                    <div className="flex-1">
+                      <h4 className="text-xl md:text-2xl font-bold text-lightest-slate uppercase tracking-tight group-hover:text-teal transition-colors">
+                         {item.link !== '#' ? (
+                           <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                             {item.title}
+                             <ExternalLink className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                           </a>
+                         ) : (
+                           item.title
+                         )}
+                      </h4>
+                      <p className="text-slate font-mono text-xs uppercase tracking-widest mt-2">{item.organization}</p>
+                    </div>
+                    
+                    <div className="flex items-center gap-4 min-w-max">
+                       <span className="text-white font-mono text-sm border border-slate px-3 py-1 rounded-full uppercase">
+                        {item.date}
+                      </span>
+                    </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-between items-end border-b-2 border-slate pb-4"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-lightest-slate">Achievements</h2>
-          <span className="text-slate font-mono hidden md:block">04</span>
-        </motion.div>
-
-        {/* Achievements Section */}
-        <div className="-mt-12">
+        <div id="achievements">
           <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-between items-end border-b-2 border-slate pb-4 pt-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-lightest-slate">Achievements</h2>
+            <span className="text-slate font-mono hidden md:block">04</span>
+          </motion.div>
+
+          {/* Achievements Section */}
+          <div className="mt-8">
+            <motion.div 
              variants={containerVariants}
              initial="hidden"
              whileInView="visible"
@@ -146,6 +149,7 @@ const Achievements = () => {
               </motion.div>
             ))}
           </motion.div>
+        </div>
         </div>
 
       </div>

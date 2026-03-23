@@ -13,7 +13,7 @@ const Hobbies = () => {
   ];
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-navy text-white min-h-[50vh] flex flex-col justify-center border-t-2 border-slate">
+    <section id="hobbies" className="py-24 px-6 md:px-12 bg-navy text-white min-h-[50vh] flex flex-col justify-center border-t-2 border-slate">
       <div className="max-w-[1200px] mx-auto w-full">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-lightest-slate mb-6">Off The Grid</h2>

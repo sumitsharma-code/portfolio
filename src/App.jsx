@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Achievements from './components/Achievements';
 import Education from './components/Education';
-import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Hobbies from './components/Hobbies';
 import Contact, { Footer } from './components/Contact';
@@ -18,10 +17,9 @@ const HomePage = () => (
     <main className="container mx-auto px-6 md:px-12 lg:px-24">
       <Hero />
       <About />
-      <Achievements />
-      <Education />
-      <Projects />
       <Skills />
+      <Education />
+      <Achievements />
       <Hobbies />
       <Contact />
     </main>

@@ -6,8 +6,11 @@ import { Menu, X, Music } from 'lucide-react';
 
 const navLinks = [
   { name: 'ABOUT', to: 'about' },
-  { name: 'WORKS', to: 'projects' },
+  { name: 'SKILLS', to: 'skills' },
   { name: 'EDUCATION', to: 'education' },
+  { name: 'CERTIFICATION', to: 'certifications' },
+  { name: 'ACHIEVEMENT', to: 'achievements' },
+  { name: 'OFF THE GRID', to: 'hobbies' },
   { name: 'CONTACT', to: 'contact' },
 ];
 
