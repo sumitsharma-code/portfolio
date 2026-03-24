@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Projects from './components/Projects'
 import Achievements from './components/Achievements';
 import Education from './components/Education';
 import Skills from './components/Skills';
@@ -18,6 +19,7 @@ const HomePage = () => (
       <Hero />
       <About />
       <Skills />
+      <Projects />
       <Education />
       <Achievements />
       <Hobbies />
